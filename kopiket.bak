@@ -1,0 +1,112 @@
+
+<h1>tholabuleilm.side</h1>
+      <div class="search-bar collapsed" id="siteSearchBar">
+          <button id="toggleSearch" class="toggle-search" aria-label="Buka pencarian" title="Cari">
+              <!-- Minimalist magnifier SVG -->
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+          </button>
+          <div class="search-controls" aria-hidden="true">
+              <input type="search" id="siteSearch" placeholder="Cari buku..." aria-label="Search situs">
+              <button id="doSearch" type="button" title="Cari">Cari</button>
+              <button id="clearSearch" type="button" title="Bersihkan pencarian"></button>
+          </div>
+      </div>
+
+<script>
+      (function(){
+        const searchBar = document.getElementById('siteSearchBar');
+        const input = document.getElementById('siteSearch');
+        const listItems = document.querySelectorAll('ul > li');
+        const clearBtn = document.getElementById('clearSearch');
+        const toggle = document.getElementById('toggleSearch');
+        const doSearch = document.getElementById('doSearch');
+
+        if (!searchBar || !input) return;
+
+        function normalizeText(s){
+            try { return s.normalize('NFD').replace(/\p{Diacritic}/gu, ''); } catch(e) { return s; }
+        }
+
+        function performSearch() {
+            const qRaw = input.value.trim();
+            const q = normalizeText(qRaw).toLowerCase();
+            let matches = 0;
+            listItems.forEach(li => {
+                const textRaw = li.textContent;
+                const text = normalizeText(textRaw).toLowerCase();
+                const show = q === '' ? true : text.includes(q);
+                li.style.display = show ? '' : 'none';
+                if (show) matches++;
+            });
+
+            // show/hide "no results" message
+            let noEl = document.getElementById('noResultsMsg');
+            if (!noEl) {
+                noEl = document.createElement('p');
+                noEl.id = 'noResultsMsg';
+                noEl.style.textAlign = 'center';
+                noEl.style.color = '#304040';
+                noEl.style.marginTop = '12px';
+                noEl.textContent = 'Tidak ada hasil untuk pencarian Anda.';
+                const ul = document.querySelector('ul');
+                if (ul && ul.parentNode) ul.parentNode.insertBefore(noEl, ul.nextSibling);
+            }
+            noEl.style.display = matches === 0 ? '' : 'none';
+        }
+
+        input.addEventListener('input', performSearch); // live filter
+
+        // Enter key triggers search (for accessibility) and Escape closes
+        input.addEventListener('keydown', function(e){
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            } else if (e.key === 'Escape') {
+                collapse();
+            }
+        });
+
+        if (doSearch) doSearch.addEventListener('click', function(){ if (searchBar.classList.contains('collapsed')) expand(); performSearch(); });
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function(){
+                input.value = '';
+                performSearch();
+                input.focus();
+            });
+        }
+
+        function expand(){
+            searchBar.classList.remove('collapsed');
+            searchBar.classList.add('expanded');
+            const controls = searchBar.querySelector('.search-controls');
+            if (controls) controls.setAttribute('aria-hidden','false');
+            setTimeout(()=> input.focus(), 120);
+        }
+
+        function collapse(){
+            searchBar.classList.remove('expanded');
+            searchBar.classList.add('collapsed');
+            const controls = searchBar.querySelector('.search-controls');
+            if (controls) controls.setAttribute('aria-hidden','true');
+        }
+
+        toggle.addEventListener('click', function(e){
+            e.stopPropagation();
+            if (searchBar.classList.contains('collapsed')) expand(); else collapse();
+        });
+
+        // click outside to close
+        document.addEventListener('click', function(e){
+            if (!searchBar.contains(e.target) && searchBar.classList.contains('expanded')) collapse();
+        });
+    })();
+</script>
+
+</body>
+</html>
+
+

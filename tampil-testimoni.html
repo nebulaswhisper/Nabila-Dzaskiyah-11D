@@ -1,0 +1,61 @@
+<html lang="id">
+    <head> <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Semua testimoni</title>
+     <link rel="stylesheet" href="styles.css" /> 
+     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    </head> 
+    <body>
+        <header>
+            <h1>tholabuleilm.side</h1>
+            <nav>
+                <a href="index.html" class="nav-btn">Beranda</a> 
+                <a href="produk.html" class="nav-btn">Produk</a>
+                <a href="bedah-buku.html" class="nav-btn">Bedah Buku</a>
+                <a href="testimoni.html" class="nav-btn">Testimoni</a>
+                <a href="tampil-testimoni.html" class="nav-btn active" aria-current="page">Testimoni Pembeli</a>
+                <a href="event.html" class="nav-btn" >Event</a>
+                <a href="kontak.html" class="nav-btn">Kontak</a>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Daftar Testimoni</h2>
+            <div id="daftarTestimoni" class="testimoni-grid"></div>
+            <div class="btn-wrapper"><button id="hapusSemua" class="btn">Hapus Semua Testimoni</button></div>
+        </main>
+
+<script>
+        const container = document.getElementById('daftarTestimoni');
+        const testimoniList = JSON.parse(localStorage.getItem('testimoniList')) || [];
+
+        if (testimoniList.length === 0) {
+            container.innerHTML = "<p>Belum ada testimoni.</p>";
+        } else {
+            testimoniList.forEach((t,i) => {
+                const el = document.createElement('div');
+                el.className = 'testimoni-box';
+                el.innerHTML = `
+                    <h3>Testimoni ${i + 1}</h3>
+                    <p><strong>Nama:</strong> ${t.nama}</p>
+                    <P><strong>Asal:</strong> ${t.asal}</p>
+                    <p><strong>Email:</strong> ${t.email}</p>
+                    <p><strong>Judul Buku:</strong> ${t.judulBuku}</p>
+                    <p><strong>Ulasan:</strong> ${t.ulasan}</p>
+                    <p><strong>Rating:</strong> ${t.rating} / 5</p>
+                    
+                `;
+                container.appendChild(el);
+            });
+        document.getElementById("hapusSemua").addEventListener("click", function() {
+            const konfirmasi = confirm("Apakah Anda yakin ingin menghapus semua testimoni?");
+            if (konfirmasi) {
+                localStorage.removeItem('testimoniList');
+                location.reload();
+            }   
+        });
+        }
+      </script>
+    </body>
+</html>

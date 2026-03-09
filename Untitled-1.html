@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Buku Hijau - Koleksi Ilmu Terbaik</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar { background-color: #1a5928; } /* Hijau Tua */
+        .btn-custom { background-color: #28a745; color: white; }
+        .hero-section { background-color: #f8f9fa; padding: 50px 0; }
+        .card-img-top { height: 300px; object-fit: contain; padding: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">BOOKSTORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide shadow" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="URL_GAMBAR_1_KAMU" class="d-block w-100" alt="Banner 1" style="max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Koleksi Kitab Tauhid</h5>
+                    <p>Murnikan aqidah dengan rujukan yang shahih.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="URL_GAMBAR_2_KAMU" class="d-block w-100" alt="Banner 2" style="max-height: 500px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Tafsir As-Sa'di</h5>
+                    <p>Memahami Al-Qur'an dengan bahasa yang mudah.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Koleksi Terpopuler</h2>
+        <div class="row g-4">
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="URL_FOTO_BUKU_SAINS" class="card-img-top" alt="Buku Sains">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ensiklopedia Sains</h5>
+                        <p class="card-text text-muted">Penjelasan mendalam tentang alam semesta.</p>
+                        <a href="#" class="btn btn-custom px-4">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="URL_FOTO_KITAB_TAUHID" class="card-img-top" alt="Kitab Tauhid">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mulakhos Kitab Tauhid</h5>
+                        <p class="card-text text-muted">Ringkasan penjelasan aqidah yang sistematis.</p>
+                        <a href="#" class="btn btn-custom px-4">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="URL_FOTO_TAFSIR" class="card-img-top" alt="Tafsir">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Tafsir As-Sa'di</h5>
+                        <p class="card-text text-muted">Tafsir ringkas yang sangat aplikatif.</p>
+                        <a href="#" class="btn btn-custom px-4">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Toko Buku Ilmu. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
