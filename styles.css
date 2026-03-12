@@ -25,6 +25,7 @@ body {
         ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
         }
         li {
             margin: 10px 0;
@@ -368,3 +369,8 @@ footer {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
+
+.p {
+            text-align: center;
+}
+
