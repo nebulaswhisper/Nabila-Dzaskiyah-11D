@@ -31,7 +31,8 @@
         const testimoniList = JSON.parse(localStorage.getItem('testimoniList')) || [];
 
         if (testimoniList.length === 0) {
-            container.innerHTML = "<h3>Belum ada testimoni.</h3>";
+            container.innerHTML = "<p style="text-align: center;">Belum ada testimoni.</p>
+";
         } else {
             testimoniList.forEach((t,i) => {
                 const el = document.createElement('div');
@@ -60,3 +61,4 @@
     </body>
 
 </html>
+
